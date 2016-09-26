@@ -1,0 +1,24 @@
+\documentclass{article}
+\author{Yu Pan, Temirlan Uulu, Zhao Liu}
+\title{Eventor}
+\begin{document}
+	\maketitle
+	\section*{Functionality}
+	\begin{enumerate}
+		\item People who are organizing events(party, basketball game, board game, etc.) can post the information or find people who would like to join. Also, you can also invite specific people to join.
+		\item For those who are boring and want to search for some specific event to join, our website provide him or her a platform to find various kinds of events that are going to happen in the near future.
+	\end{enumerate}
+	\section*{Basic UI}
+	\begin{enumerate}
+		\item \textbf{Create events:} each event have a name and several event types. Also, users should specify the exact time and  place the event is taking place, as well as the expected number of people that could join.
+		\item \textbf{Search events:} for those who are searching the events to join, they can search by category, time, or place. Other corresponding attributes would be given at the same time.
+		\item \textbf{Join events:} When you find the ideal event that you want to join, you can mark on the web saying that you are coming.
+		\item \textbf{User's homepage:} on your own homepage, you can specify your own interests such that those who holds the same interest could invite you to join their events.
+		\item \textbf{Illegal events:} Joining full events; Creating events not within the next 2 weeks.
+	\end{enumerate}
+	\section*{Info storage}
+	\begin{enumerate}
+		\item \textbf{User:} we obtain username and password from campusnet directly. After log in, users can enter their real name as well as their interest in the homepages. All information above would be stored as user's attributes.
+		\item \textbf{Events:} whenever you create your event, a unique event-id would be created correspondingly. Users would enter the name of events, also specify time, place, number of people and events type while creating the events. They all stored as the attributes and event-id would play an important role as the key attribute for our database to store information.
+	\end{enumerate}
+\end{document}
