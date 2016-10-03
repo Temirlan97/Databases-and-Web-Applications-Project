@@ -85,25 +85,36 @@ CREATE TABLE party(
 	PRIMARY KEY(pa_id)
 );
 
-CREATE TABLE create(
-	c_u_id CHAR(20) NOT NULL,
-	c_e_id CHAR(20) NOT NULL,
-	PRIMARY KEY (c_e_id),
-	FOREIGN KEY c_u_id NOT NULL REFERENCES users(u_id) ON DELETE CASCADE,
-	FOREIGN KEY c_e_id NOT NULL REFERENCES event(e_id) ON DELETE CASCADE
+CREATE TABLE create_event(
+	u_id_fk CHAR(20) NOT NULL,
+	e_id_fk CHAR(20) NOT NULL,
+	CONSTRAINT c_user_id
+      FOREIGN KEY (u_id_fk) 
+      REFERENCES users(u_id),
+    CONSTRAINT c_event_id
+      FOREIGN KEY (e_id_fk) 
+      REFERENCES event(e_id)
 );
 
-CREATE TABLE join(
-	u_id CHAR(20) NOT NULL,
-	e_id CHAR(20) NOT NULL,
-	PRIMARY KEY (e_id, u_id),	
-	FOREIGN KEY u_id NOT NULL REFERENCES users(u_id) ON DELETE CASCADE,
-	FOREIGN KEY e_id NOT NULL REFERENCES event(e_id) ON DELETE CASCADE
+CREATE TABLE join_event(
+	u_id_fk CHAR(20) NOT NULL,
+	e_id_fk CHAR(20) NOT NULL,
+	CONSTRAINT j_user_id
+      FOREIGN KEY (u_id_fk) 
+      REFERENCES users(u_id),
+	CONSTRAINT j_event_id
+      FOREIGN KEY (e_id_fk) 
+      REFERENCES event(e_id),
+	PRIMARY KEY (u_id_fk, e_id_fk)	
 );
 
 CREATE TABLE take_place_in(
-	l_id CHAR(20) NOT NULL,
-	e_id CHAR(20) NOT NULL,
-	FOREIGN KEY l_id NOT NULL REFERENCES users(l_id) ON DELETE CASCADE,
-	FOREIGN KEY e_id NOT NULL REFERENCES event(e_id) ON DELETE CASCADE
+	p_l_id CHAR(20) NOT NULL,
+	p_e_id CHAR(20) NOT NULL,
+	CONSTRAINT location_id
+	  FOREIGN KEY (p_l_id) 
+	  REFERENCES location(l_id),
+	CONSTRAINT event_id
+	  FOREIGN KEY (p_e_id)
+	  REFERENCES event(e_id)
 );
