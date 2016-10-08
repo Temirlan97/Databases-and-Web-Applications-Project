@@ -8,19 +8,25 @@ CREATE TABLE users(
 );
 
 CREATE TABLE students(
-	s_id CHAR(20) NOT NULL REFERENCES users(u_id),
+	s_id CHAR(20) NOT NULL,
 	major CHAR(20) NOT NULL,
 	chass_of int NOT NULL,
 	college CHAR(10) NOT NULL,
 	room_no CHAR(10) NOT NULL,
-	PRIMARY KEY(s_id)
+	PRIMARY KEY (s_id),
+	CONSTRAINT s_id_fk
+      FOREIGN KEY (s_id)
+      REFERENCES users(e_id)
 );
 
 CREATE TABLE faculty(
-	f_id CHAR(20) NOT NULL REFERENCES users(u_id),
+	f_id CHAR(20) NOT NULL,
 	position CHAR(10) NOT NULL,
 	field CHAR(20) NOT NULL,
-	PRIMARY KEY(f_id)
+	PRIMARY KEY(f_id),
+	CONSTRAINT f_id_fk
+      FOREIGN KEY (f_id)
+      REFERENCES users(e_id)
 );
 
 CREATE TABLE location(
@@ -29,16 +35,22 @@ CREATE TABLE location(
 );
 
 CREATE TABLE on_campus(
-	on_id CHAR(20) NOT NULL REFERENCES location(l_id),
+	on_id CHAR(20) NOT NULL,
 	max_people  int NOT NULL,
 	l_name CHAR(10) NOT NULL,
-	PRIMARY KEY (on_id)
+	PRIMARY KEY (on_id),
+	CONSTRAINT on_id_fk
+		FOREIGN KEY (on_id)
+		REFERENCES location(l_id)
 );
 
 CREATE TABLE off_campus(
-	off_id CHAR(20) NOT NULL REFERENCES location(l_id),
+	off_id CHAR(20) NOT NULL,
 	address CHAR(40) NOT NULL,
-	PRIMARY KEY (off_id)
+	PRIMARY KEY (off_id),
+	CONSTRAINT off_id_fk
+		FOREIGN KEY (off_id)
+		REFERENCES location(l_id)
 );
 
 CREATE TABLE event(
@@ -50,39 +62,57 @@ CREATE TABLE event(
 );
 
 CREATE TABLE study(
-	st_id CHAR(20) NOT NULL REFERENCES event(e_id),
+	st_id CHAR(20) NOT NULL,
 	course CHAR(20) NOT NULL,
-	PRIMARY KEY (st_id)
+	PRIMARY KEY (st_id),
+	CONSTRAINT st_id_fk
+		FOREIGN  KEY (st_id)
+		REFERENCES event(e_id)
 );
 
 CREATE TABLE travel(
-	tr_id CHAR(20) NOT NULL REFERENCES event(e_id),
+	tr_id CHAR(20) NOT NULL,
 	budget int NOT NULL,
-	PRIMARY KEY (tr_id) 
+	PRIMARY KEY (tr_id),
+	CONSTRAINT tr_id_fk
+		FOREIGN KEY(tr_id)
+		REFERENCES event(e_id)
 );
 
 CREATE TABLE sport(
-	sp_id CHAR(20) NOT NULL REFERENCES event(e_id),
+	sp_id CHAR(20) NOT NULL,
 	game_name CHAR(20) NOT NULL,
-	PRIMARY KEY(sp_id)
+	PRIMARY KEY(sp_id),
+	CONSTRAINT sp_id_fk
+		FOREIGN KEY(sp_id)
+		REFERENCES event(e_id)
 );
 
 CREATE TABLE board_game(
-	bo_id CHAR(20) NOT NULL REFERENCES event(e_id),
+	bo_id CHAR(20) NOT NULL,
 	game_name CHAR(20) NOT NULL,
-	PRIMARY KEY(bo_id)
+	PRIMARY KEY(bo_id),
+	CONSTRAINT bo_id_fk
+		FOREIGN KEY(bo_id)
+		REFERENCES event(e_id)
 );
 
 CREATE TABLE movie(
-	mo_id CHAR(20) NOT NULL REFERENCES event(e_id),
+	mo_id CHAR(20) NOT NULL,
 	movie_name CHAR(20) NOT NULL,
-	PRIMARY KEY(mo_id)
+	PRIMARY KEY(mo_id),
+	CONSTRAINT mo_id_fk
+		FOREIGN KEY(mo_id)
+		REFERENCES event(e_id)
 );
 
 CREATE TABLE party(
-	pa_id CHAR(20) NOT NULL REFERENCES reason(e_id),
+	pa_id CHAR(20) NOT NULL,
 	reason CHAR(20) NOT NULL,
-	PRIMARY KEY(pa_id)
+	PRIMARY KEY(pa_id),
+	CONSTRAINT pa_id_fk
+		FOREIGN KEY(pa_id)
+		REFERENCES event(e_id)
 );
 
 CREATE TABLE create_event(
