@@ -10,7 +10,7 @@ CREATE TABLE users(
 CREATE TABLE students(
 	s_id CHAR(20) NOT NULL,
 	major CHAR(20) NOT NULL,
-	chass_of int NOT NULL,
+	class_of int NOT NULL,
 	college CHAR(10) NOT NULL,
 	room_no CHAR(10) NOT NULL,
 	PRIMARY KEY (s_id),
