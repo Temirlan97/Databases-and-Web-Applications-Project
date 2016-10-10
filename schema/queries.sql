@@ -1,17 +1,17 @@
 /* Find the IDs of all students whose major is CS and who lives in C3 */
-SELECT S.s_id
-FROM students S
-WHERE S.major = "CS" AND college = "C3"
+SELECT students.s_id
+FROM students
+WHERE students.major = "CS" AND college = "C3"
 
 /*Find the IDs of faculty whose field is "CS"*/
-SELECT F.f_id
-FROM faculty F
-WHERE F.field = "CS"
+SELECT faculty.f_id
+FROM faculty
+WHERE faculty.field = "CS"
 
 /* Find the location on campus, which can fit the biggest amount of people */
-SELECT C.l_name
-FROM on_campus C
-HAVING C.max_people = MAX(C.max_people)
+SELECT on_campus.l_name
+FROM on_campus
+HAVING on_campus.max_people = MAX(on_campus.max_people)
 
 /* Find all the organizers of the events */
 SELECT U.realname
@@ -19,9 +19,9 @@ FROM users U JOIN create_event CR
 WHERE U.u_id = CR.u_id_fk
 
 /* Return the location names on campus where some event will take place */
-SELECT L.l_name
-FROM on_campus OC JOIN take_place_in TK
-WHERE OC.on_id = TK.p_l_id
+SELECT on_campus.l_name
+FROM on_campus JOIN take_place_in
+WHERE on_campus.on_id = TK.p_l_id
 
 /* Find IDs of all students participating in any event */
 SELECT S.s_id
