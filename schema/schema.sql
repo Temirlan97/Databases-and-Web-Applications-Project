@@ -117,7 +117,13 @@ CREATE TABLE party(
 
 CREATE TABLE join_event(
 	u_id MEDIUMINT(9) NOT NULL REFERENCES users(u_id),
-	e_id MEDIUMINT(9) NOT NULL REFERENCES event(e_id)
+	e_id MEDIUMINT(9) NOT NULL REFERENCES event(e_id),
+	CONSTRAINT uid
+		FOREIGN KEY(u_id)
+		REFERENCES users(u_id),
+	CONSTRAINT eid
+		FOREIGN KEY(e_id)
+		REFERENCES event(e_id)
 );
 
 CREATE TABLE take_place_in(

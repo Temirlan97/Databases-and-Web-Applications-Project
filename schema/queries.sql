@@ -8,11 +8,11 @@ SELECT faculty.f_id
 FROM faculty
 WHERE faculty.field = "CS"
 
-/* Find the location on campus, which can fit the biggest amount of people */
-SELECT on_campus.l_name
+/* Find the location on campus, which can fit more than 30 */
+SELECT l_name, MAX(max_people)
 FROM on_campus
 GROUP BY l_name
-HAVING on_campus.max_people = SELECT( MAX(on_campus.max_people) FROM on_campus)
+HAVING MAX(max_people) > 30
 
 /* Find the names of the organizers of the events */
 SELECT users.realname
@@ -27,13 +27,13 @@ WHERE on_campus.on_id = take_place_in.p_l_id
 /* Find IDs of all students participating in any event */
 SELECT students.s_id
 FROM students JOIN join_event
-WHERE students.s_id = join_event.u_id_fk
+WHERE students.s_id = join_event.u_id
 
 /* Find the average capacity of the locations on campus */
 SELECT AVG(max_people)
 FROM on_campus
 
-/* Find the locations of all the table-tennis events on campus*/
+/* Find the locations of all the Rowing events on campus*/
 SELECT on_campus.l_name
 FROM sport, on_campus, take_place_in
 WHERE sport.game_name = "table-tennis" AND sport.sp_id = take_place_in.p_e_id AND take_place_in.p_l_id = on_campus.on_id
