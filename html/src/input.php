@@ -13,7 +13,14 @@
     </select>
     <br>
     Please enter event name:
-    <input type="text" name="boardgame">
+    <input type="text" name="name">
+    <br>
+    PLease enter the time period: 
+    <input type="text" name="e_time">
+    <br>
+    Please enter the discription:
+    <br>
+    <textarea name="message" rows="10" cols="30"></textarea>
     <br><br>
     <input type="submit" value="Submit">
     <br><br><br><br>
