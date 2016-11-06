@@ -18,6 +18,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/index.php">Eventor</a>
         </div>
@@ -28,6 +29,7 @@
             <li <?php if($filename == "my_profile.php"){echo "class=\"active\"";} ?>><a href="/src/my_profile.php">My profile</a></li>
             <li <?php if($filename == "activities.php"){echo "class=\"active\"";} ?>><a href="/src/activities.php">Activities</a></li>
             <li <?php if($filename == "imprint.php"){echo "class=\"active\"";} ?>><a href="/src/imprint.php">Imprint</a></li>
+            <li <?php if($filename == "input.php"){echo "class=\"active\"";} ?>><a href="/src/input.php">Input</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
