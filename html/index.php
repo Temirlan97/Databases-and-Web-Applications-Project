@@ -1,34 +1,20 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT']."/template/header.php" ?>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "eventor";
-$output = '';
+define('DB_USER', 'test');
+define('DB_PASSWORD', 'password');
+define('DB_HOST', 'localhost');
+define('DE_NAME', 'eventor');
 
-mysql_connect($servername, $username, $password) or die("Could not connet");
-mysql_select_db($dbname) or die("Could not find db");
+$dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DE_NAME);
 
-if(isset($_POST['search'])){
-  $searchq = $_POST['search'];
-  $searchq = preg_replace("#^0-9a-z#i", "", $searchq);
-
-  $query = mysql_query(SELECT * FROM  students WHERE user LIKE "%$searchq%" OR major LIKE "%$searchq%") or die("Could not search");
-  $count = mysql_num_rows($query);
-  if($count == 0){
-    $output = "There's no search result";
-  }
-  else {
-    while($row = mysql_fetch_array($query)){
-      $name = user;
-
-      $outpu .= '<div> '.$name' </div>';
-    }
-  }
+if($dbc){
+  echo "worked!";
 }
 
-
+if($dbc == false){
+  echo "not working";
+}
 ?>
 
 <div class="jumbotron">
@@ -41,13 +27,6 @@ if(isset($_POST['search'])){
   <input type="submit" name="search students">
 </form>
 
-<?php print($output) ?>
-
-<!-- <form action = "index.php" method="post">
-  <input type = "test" name = "search" placeholder="Search for faculties">
-  <input type="submit" name="search faculties">
-</form>
- -->
 <div class="page-header">
   <h1>Most recent activities and Our recommendation</h1>
 </div>

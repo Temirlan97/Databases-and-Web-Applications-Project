@@ -4,6 +4,16 @@
   <h1>Activities</h1>
 </div>
 <p>Activities listed below. User can also click the following buttons to see a certain type of events.</p>
+
+<form action = "index.php" method="post">
+  <input type = "test" name = "search" placeholder = "search for organizer">
+  <input type="submit" name="get organizer">
+</form>
+
+<form action = "index.php" method="post">
+  <input type="submit" name="get large_location">
+</form>
+
 <p>
   <button type="button" class="btn btn-sm btn-default">Party</button>
   <button type="button" class="btn btn-sm btn-primary">Study Group</button>
